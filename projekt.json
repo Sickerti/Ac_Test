@@ -5,7 +5,7 @@
   "data": [
     {
       "type": "start",
-      "text": "<b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen – du wirst viele interessante Fakten kennenlernen!",
+      "text": "<span style=\"color:#c0b81b\"><b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br></span>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen – du wirst viele interessante Fakten kennenlernen!",
       "background": ""
     },
     {

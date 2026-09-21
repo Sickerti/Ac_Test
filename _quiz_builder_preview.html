@@ -110,12 +110,12 @@ hintBtn.onclick = () => {
 const data = [
   {
     "type": "start",
-    "text": "<b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen – du wirst viele interessante Fakten kennenlernen!",
+    "text": "<span style=\"color:#c0b81b\"><b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br></span>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen – du wirst viele interessante Fakten kennenlernen!",
     "background": ""
   },
   {
     "type": "info",
-    "text": "<span style=\"font-size:24pt\"><b>Schön, dass du da bist!</b></span><br> <br>In diesem spannenden Actionbound-<span style=\"color:#8161e0\">Quiz</span> gehst du auf Entdeckungsreise durch unsere Dauerausstellung. 🕵️<br>‍Du wirst faszinierende Dinge über Bücher, das Schreiben und alte Schriften entdecken – von Federkiel bis Digitalzeit.<br><br>\n\nWusstest du, dass das Smartphone in deiner Hand eine ganz moderne Fortsetzung jahrtausendealter Schreibtraditionen ist?<br> Genau wie einst auf Papyrus, Pergament oder Papier werden auch heute noch Gedanken festgehalten – nur eben digital.<br>\n\n⏱️ Keine Sorge: Deine Reise dauert nur etwa 30 Minuten. Los geht’s – viel Spaß!\n\n\n"
+    "text": "<b>Schön, dass du da bist!</b> <br>In diesem spannenden Actionbound-<span style=\"color:#8161e0\">Quiz</span> gehst du auf Entdeckungsreise durch unsere Dauerausstellung. 🕵️<br>‍Du wirst faszinierende Dinge über Bücher, das Schreiben und alte Schriften entdecken – von Federkiel bis Digitalzeit.<br><br>\n\nWusstest du, dass das Smartphone in deiner Hand eine ganz moderne Fortsetzung jahrtausendealter Schreibtraditionen ist?<br> Genau wie einst auf Papyrus, Pergament oder Papier werden auch heute noch Gedanken festgehalten – nur eben digital.<br>\n\n⏱️ Keine Sorge: Deine Reise dauert nur etwa 30 Minuten. Los geht’s – viel Spaß!\n\n\n"
   },
   {
     "type": "quiz",
@@ -448,11 +448,14 @@ function showSolution(item) {
     `;
   }
   if (item.type === "quiz") {
-    content += "<p>Richtig waren:</p><ul style='list-style:none; padding-left:0;'>";
+    content += "<p style='text-align:center;'>Richtig waren:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
     content += item.answers.map((a, i) =>
-      item.correct.includes(i) ? `<li>✅ ${a}</li>` : ""
+      item.correct.includes(i)
+        ? `<tr><td style='padding:3px 10px 3px 0; text-align:left; width:30px;'>✅</td><td style='padding:3px 0; text-align:left;'>${a}</td></tr>`
+        : ""
     ).join("");
-    content += "</ul>";
+    content += "</table>";
   } else if (item.type === "multi_select") {
     app.innerHTML = "<h2>Leider nicht korrekt</h2><p>Richtige Antworten:</p>";
     const grid = document.createElement("div");
@@ -484,11 +487,36 @@ function showSolution(item) {
     content = `
       <h2>Deine Schätzung war leider nicht ganz richtig.</h2>
       <p><b>Richtige Antwort:</b> ${item.correct}</p>`;
+  } else if (item.type === "match") {
+    content += "<p style='text-align:center;'>Richtige Zuordnung:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+    content += item.pairs.map(pair =>
+      `<tr>
+        <td style='padding:3px 20px 3px 0; text-align:left;'>${pair[0]}</td>
+        <td style='padding:3px 10px 3px 0; text-align:left;'>↔</td>
+        <td style='padding:3px 0; text-align:left;'>${pair[1]}</td>
+      </tr>`
+    ).join("");
+    content += "</table>";
+  } else if (item.type === "true_false" || item.type === "truefalse") {
+    content += "<p>Richtige Antwort:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+    content += `<tr>
+      <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>✅</td>
+      <td style='padding:3px 0; text-align:left;'>${item.correct ? "Wahr" : "Falsch"}</td>
+    </tr>`;
+    content += "</table>";
   } else if (item.type === "sort") {
-    content += "<p>Richtige Reihenfolge:</p><ol>";
-    const correctOrder = item.correct.map(i => item.items[i]);
-    content += correctOrder.map(item => `<li>✅ ${item}</li>`).join("");
-    content += "</ol>";
+  content += "<p style='text-align:center;'>Richtige Reihenfolge:</p>";
+  content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+  const correctOrder = item.correct.map(i => item.items[i]);
+  content += correctOrder.map((item, i) =>
+    `<tr>
+      <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>${i + 1}.</td>
+      <td style='padding:3px 0; text-align:left;'>${item}</td>
+    </tr>`
+  ).join("");
+  content += "</table>";
   }
   content += `<button onclick="next()">Weiter</button>`;
   app.innerHTML = content;

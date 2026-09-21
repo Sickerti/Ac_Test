@@ -251,8 +251,8 @@ function showSolution(item) {
     `;
   }
   if (item.type === "quiz") {
-    content += "<p>Richtig waren:</p>";
-    content += "<table style='border-collapse:collapse; margin:0;'>";
+    content += "<p style='text-align:center;'>Richtig waren:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
     content += item.answers.map((a, i) =>
       item.correct.includes(i)
         ? `<tr><td style='padding:3px 10px 3px 0; text-align:left; width:30px;'>✅</td><td style='padding:3px 0; text-align:left;'>${a}</td></tr>`
@@ -291,27 +291,35 @@ function showSolution(item) {
       <h2>Deine Schätzung war leider nicht ganz richtig.</h2>
       <p><b>Richtige Antwort:</b> ${item.correct}</p>`;
   } else if (item.type === "match") {
-    content += "<p>Richtige Zuordnung:</p>";
-    content += "<table style='border-collapse:collapse; margin:0;'>";
+    content += "<p style='text-align:center;'>Richtige Zuordnung:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
     content += item.pairs.map(pair =>
       `<tr>
-        <td style='padding:3px 20px 3px 0; text-align:left;'>${pair.left}</td>
+        <td style='padding:3px 20px 3px 0; text-align:left;'>${pair[0]}</td>
         <td style='padding:3px 10px 3px 0; text-align:left;'>↔</td>
-        <td style='padding:3px 0; text-align:left;'>${pair.right}</td>
+        <td style='padding:3px 0; text-align:left;'>${pair[1]}</td>
       </tr>`
     ).join("");
+    content += "</table>";
+  } else if (item.type === "true_false" || item.type === "truefalse") {
+    content += "<p>Richtige Antwort:</p>";
+    content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+    content += `<tr>
+      <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>✅</td>
+      <td style='padding:3px 0; text-align:left;'>${item.correct ? "Wahr" : "Falsch"}</td>
+    </tr>`;
     content += "</table>";
   } else if (item.type === "sort") {
-    content += "<p>Richtige Reihenfolge:</p>";
-    content += "<table style='border-collapse:collapse; margin:0;'>";
-    const correctOrder = item.correct.map(i => item.items[i]);
-    content += correctOrder.map((item, i) =>
-      `<tr>
-        <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>${i + 1}.</td>
-        <td style='padding:3px 0; text-align:left;'>${item}</td>
-      </tr>`
-    ).join("");
-    content += "</table>";
+  content += "<p style='text-align:center;'>Richtige Reihenfolge:</p>";
+  content += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+  const correctOrder = item.correct.map(i => item.items[i]);
+  content += correctOrder.map((item, i) =>
+    `<tr>
+      <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>${i + 1}.</td>
+      <td style='padding:3px 0; text-align:left;'>${item}</td>
+    </tr>`
+  ).join("");
+  content += "</table>";
   }
   content += `<button onclick="next()">Weiter</button>`;
   app.innerHTML = content;
