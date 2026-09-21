@@ -5,18 +5,34 @@
   "data": [
     {
       "type": "start",
-      "text": "<span style=\"color:#c0b81b\"><b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br></span>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen – du wirst viele interessante Fakten kennenlernen!",
-      "background": ""
+      "text": "<span style=\"font-size:24pt\"><span style=\"color:#c0b81b\"><b>Erkunde die Geschichte der Bücher und Schrift!</b> 📚<br><br></span></span>\n\nAuf deinem Abenteuer durch die Dauerausstellung  des Deutschen Buch- und Schriftmuseums wirst du spannende Fragen beantworten und Entdeckungen machen. <br>Von den ersten Schriften bis hin zu modernen Kommunikationsformen –<br> du wirst viele interessante Fakten kennenlernen!",
+      "background": "media/123.jpg",
+      "media": {
+        "type": "image",
+        "src": "media/1.gif",
+        "position": "before_question",
+        "title": "Eidechse winkend auf Stein",
+        "owner": "",
+        "license": "CC 4.0"
+      }
     },
     {
       "type": "info",
-      "text": "<b>Schön, dass du da bist!</b> <br>In diesem spannenden Actionbound-<span style=\"color:#8161e0\">Quiz</span> gehst du auf Entdeckungsreise durch unsere Dauerausstellung. 🕵️<br>‍Du wirst faszinierende Dinge über Bücher, das Schreiben und alte Schriften entdecken – von Federkiel bis Digitalzeit.<br><br>\n\nWusstest du, dass das Smartphone in deiner Hand eine ganz moderne Fortsetzung jahrtausendealter Schreibtraditionen ist?<br> Genau wie einst auf Papyrus, Pergament oder Papier werden auch heute noch Gedanken festgehalten – nur eben digital.<br>\n\n⏱️ Keine Sorge: Deine Reise dauert nur etwa 30 Minuten. Los geht’s – viel Spaß!\n\n\n"
+      "text": "<b>Schön, dass du da bist!</b><br><br>In diesem spannenden Actionbound-<span style=\"color:#8161e0\">Quiz</span> gehst du auf Entdeckungsreise durch unsere Dauerausstellung. 🕵<br>‍Du wirst faszinierende Dinge über Bücher, das Schreiben und alte Schriften entdecken – von Federkiel bis Digitalzeit.<br>\n<br>\nWusstest du, dass das Smartphone in deiner Hand eine ganz moderne Fortsetzung jahrtausendealter Schreibtraditionen ist?<br> <br>Genau wie einst auf Papyrus, Pergament oder Papier werden auch heute noch Gedanken festgehalten – nur eben digital.<br>\n\n⏱️ Keine Sorge: Deine Reise dauert nur etwa 30 Minuten. <br>Los geht’s – viel Spaß!\n\n\n"
     },
     {
       "type": "quiz",
       "text": "Wie alles begann – ganz ohne Schrift!<br><br>\n\nAm Anfang der Mediengeschichte gab es noch keine Buchstaben. Die Menschen haben sich anders verständigt – zum Beispiel mit Bildern, Zeichen oder Dingen.<br>\nAber Moment mal… Schrift in Holzfiguren? 🤔 Wie soll das denn funktionieren?\n",
       "question": "Schau dir die Ketten auf dem Bild genau an. Kannst du herausfinden, wofür sie benutzt wurden?",
       "explanation": "",
+      "media": {
+        "type": "image",
+        "src": "media/2.jpg",
+        "position": "before_question",
+        "title": "",
+        "owner": "",
+        "license": ""
+      },
       "answers": [
         "Schmuck",
         "Legitimation von Botschaften",
@@ -41,6 +57,14 @@
       "text": "",
       "question": "Welches Medium war zu erst da? ",
       "explanation": "",
+      "media": {
+        "type": "image",
+        "src": "media/12.jpg",
+        "position": "before_text",
+        "title": "",
+        "owner": "",
+        "license": ""
+      },
       "items": [
         "Steintafel",
         "Papyrus",
@@ -184,9 +208,10 @@
     },
     {
       "type": "cloze_letters",
-      "text": "Johannes <span class=\"cloze\">____</span> gilt als einer der bekanntesten Erfinder Deutschlands.",
+      "text": "Johannes <span class=\"cloze\">____</span> gilt als einer der bekanntesten Erfinder Deutschlands. Er erfand die beweglichen <span class=\"cloze\">____</span>",
       "answers": [
-        "Gutenberg"
+        "Gutenberg",
+        "Letter"
       ]
     },
     {

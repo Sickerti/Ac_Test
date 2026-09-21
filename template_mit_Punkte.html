@@ -285,7 +285,7 @@ function showSolution(item) {
     return;
   } else if (item.type === "ltext") {
     const display = item.solution ?? item.correct?.[0] ?? "—";
-    content += `<p>Richtige Antwort: <b>${display}</b></p>`;
+    content += `<p style='text-align:center;'>Richtige Antwort: <b>${display}</b></p>`;
   } else if (item.type === "timeline") {
     content = `
       <h2>Deine Schätzung war leider nicht ganz richtig.</h2>
@@ -847,13 +847,17 @@ function render() {
         return;
       }
       locked = true;
-      let solution = "<p>Richtige Lösung:</p><ul>";
-      item.answers.forEach(a => {
-        solution += `<li>${a}</li>`;
+      let solution = "<p style='text-align:center;'>Richtige Lösung:</p>";
+      solution += "<table style='border-collapse:collapse; margin:0 auto; width:auto;'>";
+      item.answers.forEach((a) => {
+        solution += `<tr>
+          <td style='padding:3px 10px 3px 0; width:30px; text-align:left;'>✅</td>
+          <td style='padding:3px 0; text-align:left;'>${a}</td>
+        </tr>`;
       });
-      solution += "</ul>";
+      solution += "</table>";
       app.innerHTML = `
-        <h2>❌ Leider falsch, die Lösung ist:</h2>
+        <h2>Leider nicht korrekt</h2>
         ${solution}
         <button onclick="next()">Weiter</button>
       `;
